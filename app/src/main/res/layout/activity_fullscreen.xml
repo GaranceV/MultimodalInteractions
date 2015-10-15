@@ -14,7 +14,8 @@
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
     <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:id="@+id/frame">
 
         <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
             android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -22,11 +23,21 @@
             android:background="@color/black_overlay" android:orientation="horizontal"
             tools:ignore="UselessParent">
 
-            <Button android:id="@+id/dummy_button" style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:text="@string/dummy_button" />
-
         </LinearLayout>
+
+        <!-- Carré de l'image du bas
+        Son contenu doit être en fonction du premier élément de la liste à trier
+        Ou pour le moment, d'un seul-->
+        <ImageView
+            android:layout_width="164dp"
+            android:layout_height="164dp"
+            android:id="@+id/imageToSort"
+            android:layout_gravity="center_horizontal|bottom"
+            android:src="@drawable/farine" /> -->
+
+        <!-- Besoin d'un objet de type ingredientToSort -> qui sera dans la liste des ingredients a trier
+
+                                        sortingBox -> qui sera les différentes boites de catégories-->
     </FrameLayout>
 
 </FrameLayout>
