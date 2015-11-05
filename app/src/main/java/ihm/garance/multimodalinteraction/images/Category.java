@@ -1,5 +1,9 @@
 package ihm.garance.multimodalinteraction.images;
 
+
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+
 import ihm.garance.multimodalinteraction.R;
 
 /**
@@ -7,7 +11,7 @@ import ihm.garance.multimodalinteraction.R;
  */
 public class Category {
     private String name;
-    private int path;
+    private Integer path;
 
     public void Category(String name, int path){
         this.name=name;
@@ -15,15 +19,21 @@ public class Category {
     }
 
     public void Category(){
-        this.name="farine";
-        this.path= R.drawable.farine;
+  //      this.name="imageTest";
+//        this.path= R.drawable.imagetest;
+        this.name="";
     }
+
 
     public String getName() {
         return name;
     }
 
-    public int getPath() {
+    public Integer getPath() {
+        System.out.println("*****************************");
+        if (path == null) {
+            System.out.println("///////////////////////////////////////////////::");
+        }
         return path;
     }
 
@@ -31,7 +41,7 @@ public class Category {
         this.name = name;
     }
 
-    public void setPath(int path) {
+    public void setPath(Integer path) {
         this.path = path;
     }
 }

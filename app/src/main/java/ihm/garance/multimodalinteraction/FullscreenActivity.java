@@ -1,5 +1,6 @@
 package ihm.garance.multimodalinteraction;
 
+import ihm.garance.multimodalinteraction.images.Category;
 import ihm.garance.multimodalinteraction.images.Food;
 import ihm.garance.multimodalinteraction.util.SystemUiHider;
 
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -47,13 +49,28 @@ public class FullscreenActivity extends Activity {
     private SystemUiHider mSystemUiHider;
     private CategoryView categoryView;
     private FoodView foodView;
+    //private ImageView imageView;
+    private String categoryName;
+    private int categoryFile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_fullscreen);
+
+        categoryName = "Farine";
+        categoryFile = R.drawable.farine;
+       // imageView = (ImageView)findViewById(R.id.imageViewTest);
+
+        //imageView.setImageResource(R.drawable.imagetest);
+//        imageView.setImageResource(myCategory.getPath());
+
+
         categoryView = (CategoryView) findViewById(R.id.categoryView);
+        categoryView.setImageResource(categoryFile);
+        categoryView.setCategory(categoryName, categoryFile);
         foodView = (FoodView) findViewById(R.id.foodView);
 
       //  final View controlsView = findViewById(R.id.fullscreen_content_controls);
