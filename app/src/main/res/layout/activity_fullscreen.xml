@@ -28,7 +28,7 @@
         <!-- Carré de l'image du bas
         Son contenu doit être en fonction du premier élément de la liste à trier
         Ou pour le moment, d'un seul-->
-        <ImageView
+        <!--<ImageView
             android:layout_width="164dp"
             android:layout_height="164dp"
             android:id="@+id/imageToSort"
