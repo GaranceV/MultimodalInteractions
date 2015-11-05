@@ -10,8 +10,7 @@ public class Food {
     private int path;
 
     public Food() {
-        name = "farine";
-        path = R.drawable.farine;
+        name = "";
     }
 
     public String getName() {

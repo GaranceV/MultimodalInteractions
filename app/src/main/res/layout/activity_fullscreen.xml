@@ -34,17 +34,11 @@
             android:layout_alignParentStart="true"
             />
 
-        <ImageView
-            android:id="@+id/imageViewTest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
         <ihm.garance.multimodalinteraction.FoodView
-            android:layout_width="768px"
-            android:layout_height="700px"
+            android:layout_width="500px"
+            android:layout_height="500px"
             android:id="@+id/foodView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_gravity="bottom"
             />
         <!-- Carré de l'image du bas
         Son contenu doit être en fonction du premier élément de la liste à trier
