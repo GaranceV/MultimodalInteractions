@@ -1,6 +1,5 @@
 package ihm.garance.multimodalinteraction;
 
-import ihm.garance.multimodalinteraction.util.CategoryView;
 import ihm.garance.multimodalinteraction.util.SystemUiHider;
 
 import android.annotation.TargetApi;

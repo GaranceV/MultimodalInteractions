@@ -23,8 +23,10 @@
             android:background="@color/black_overlay" android:orientation="horizontal"
             tools:ignore="UselessParent">
 
+
         </LinearLayout> -->
-        <ihm.garance.multimodalinteraction.util.CategoryView
+
+        <ihm.garance.multimodalinteraction.CategoryView
             android:layout_width="768px"
             android:layout_height="700px"
             android:id="@+id/categoryView"

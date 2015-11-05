@@ -1,4 +1,4 @@
-package ihm.garance.multimodalinteraction.util;
+package ihm.garance.multimodalinteraction;
 
 import android.content.Context;
 import android.graphics.Bitmap;
