@@ -27,18 +27,26 @@
         </LinearLayout> -->
 
         <ihm.garance.multimodalinteraction.CategoryView
-            android:layout_width="768px"
-            android:layout_height="700px"
-            android:id="@+id/categoryView"
+            android:layout_width="600px"
+            android:layout_height="400px"
+            android:id="@+id/glucideCategory"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             />
 
+        <ihm.garance.multimodalinteraction.CategoryView
+            android:layout_width="600px"
+            android:layout_height="400px"
+            android:id="@+id/laitierCategory"
+            android:layout_gravity="right"
+            android:layout_alignParentStart="true"
+            />
+
         <ihm.garance.multimodalinteraction.FoodView
-            android:layout_width="500px"
-            android:layout_height="500px"
+            android:layout_width="400px"
+            android:layout_height="400px"
             android:id="@+id/foodView"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center_horizontal|bottom"
             />
         <!-- Carré de l'image du bas
         Son contenu doit être en fonction du premier élément de la liste à trier
