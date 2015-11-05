@@ -13,6 +13,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
@@ -54,10 +57,25 @@ public class FullscreenActivity extends Activity {
     private int categoryFile;
     private String foodName;
     private int foodFile;
+    private ArrayList<String> glucidFood;
+
+    private void fillListOfFood() {
+        glucidFood = new ArrayList<>();
+        glucidFood.add("Farine");
+    }
+
+    private void nextFoodToSort() {
+        foodName = "Lait";
+        foodFile = R.drawable.lait;
+
+        foodView.setImageResource(foodFile);
+        foodView.setFood(foodName, foodFile);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fillListOfFood();
 
         setContentView(R.layout.activity_fullscreen);
 
@@ -69,13 +87,31 @@ public class FullscreenActivity extends Activity {
         foodFile = R.drawable.farine;
 
         categoryView = (CategoryView) findViewById(R.id.categoryView);
-        //categoryView.setImageResource(categoryFile);
+        categoryView.setImageResource(categoryFile);
         categoryView.setCategory(categoryName, categoryFile);
 
 
         foodView = (FoodView) findViewById(R.id.foodView);
         foodView.setImageResource(foodFile);
         foodView.setFood(foodName, foodFile);
+
+
+        categoryView.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                System.out.println("*************************************************");
+                // glucidFood.add("Farine");
+                for (String cat : glucidFood) {
+                    if (cat.equals(foodView.getFood().getName())) {
+                        System.out.println("/////////////////////////////////////////");
+                        nextFoodToSort();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
 
       //  final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
