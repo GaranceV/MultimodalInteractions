@@ -52,16 +52,16 @@ public class FullscreenActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_fullscreen);
-        view = (CategoryView) findViewById(R.id.category);
+        view = (CategoryView) findViewById(R.id.categoryView);
 
-        final View controlsView = findViewById(R.id.fullscreen_content_controls);
+      //  final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
 
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
         mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
         mSystemUiHider.setup();
-        mSystemUiHider
+        /*mSystemUiHider
                 .setOnVisibilityChangeListener(new SystemUiHider.OnVisibilityChangeListener() {
                     // Cached values.
                     int mControlsHeight;
@@ -97,7 +97,7 @@ public class FullscreenActivity extends Activity {
                             delayedHide(AUTO_HIDE_DELAY_MILLIS);
                         }
                     }
-                });
+                }); */
 
         // Set up the user interaction to manually show or hide the system UI.
         contentView.setOnClickListener(new View.OnClickListener() {
