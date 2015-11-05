@@ -128,7 +128,7 @@ public class FullscreenActivity extends Activity {
                  View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
                  String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
 
-                 ClipData data = new ClipData(v.getTag().toString(),mimeTypes, new ClipData.Item(foodView.getFood().getName()));
+                 ClipData data = new ClipData(v.getTag().toString(), mimeTypes, new ClipData.Item(foodView.getFood().getName()));
                  v.startDrag(data, shadowBuilder, v, 0);
                  return true;
              }
@@ -137,12 +137,12 @@ public class FullscreenActivity extends Activity {
      });
 
         glucideCategory.setOnDragListener(new dropListener());
+        laitierCategory.setOnDragListener(new dropListener());
 
 
         setOnClickListener();
 
 
-      //  final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
 
         // Set up an instance of SystemUiHider to control the system UI for
@@ -257,7 +257,10 @@ public class FullscreenActivity extends Activity {
                     CategoryView dropTarget = (CategoryView) v;
                     //Define what happens on drag!!!
                     System.out.println("t'as drag!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                    //dropTarget.setText(dropped.getText().toString());
+
+                    System.out.println("Ce que t'as voulu, c'est " + dropped.getFood().getName());
+                    //Imaginons que ça soit faux sans avoir vérifié
+                    draggedView.setVisibility(View.VISIBLE);
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     break;
