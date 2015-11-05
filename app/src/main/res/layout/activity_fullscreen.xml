@@ -24,7 +24,13 @@
             tools:ignore="UselessParent">
 
         </LinearLayout>
-
+        <ihm.garance.multimodalinteraction.util.CategoryView
+            android:layout_width="768px"
+            android:layout_height="700px"
+            android:id="@+id/category"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
         <!-- Carré de l'image du bas
         Son contenu doit être en fonction du premier élément de la liste à trier
         Ou pour le moment, d'un seul-->
