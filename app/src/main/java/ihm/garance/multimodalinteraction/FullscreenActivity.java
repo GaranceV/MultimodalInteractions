@@ -15,6 +15,9 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -55,27 +58,47 @@ public class FullscreenActivity extends Activity {
 
     private String categoryName;
     private int categoryFile;
-    private String foodName;
-    private int foodFile;
-    private ArrayList<String> glucidFood;
 
-    private void fillListOfFood() {
+    private Map<String, Integer> foodList;
+
+    private List<String> glucidFood;
+    private List<String> milkyFood;
+
+    private void createAllTheFood() {
+        foodList = new HashMap<>();
+        foodList.put("farine", R.drawable.farine);
+        foodList.put("lait", R.drawable.lait);
+        foodList.put("patate", R.drawable.patate);
+        foodList.put("fromage", R.drawable.fromage);
+    }
+
+    private void fillListOfFoodInRightCategory() {
         glucidFood = new ArrayList<>();
-        glucidFood.add("Farine");
+        glucidFood.add("farine");
+        glucidFood.add("patate");
+
+        milkyFood = new ArrayList<>();
+        milkyFood.add("lait");
+        milkyFood.add("fromage");
     }
 
     private void nextFoodToSort() {
-        foodName = "Lait";
-        foodFile = R.drawable.lait;
 
-        foodView.setImageResource(foodFile);
-        foodView.setFood(foodName, foodFile);
+        //randomly chosing a new food to sort
+        Random       random    = new Random();
+        List<String> keys      = new ArrayList<String>(foodList.keySet());
+        String       randomKey = keys.get( random.nextInt(keys.size()) );
+        Integer       value     = foodList.get(randomKey);
+
+        foodView.setImageResource(value);
+        foodView.setFood(randomKey, value);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fillListOfFood();
+        createAllTheFood();
+        fillListOfFoodInRightCategory();
 
         setContentView(R.layout.activity_fullscreen);
 
@@ -83,32 +106,27 @@ public class FullscreenActivity extends Activity {
         categoryName = "Glucide";
         categoryFile = R.drawable.glucide;
 
-        foodName = "Farine";
-        foodFile = R.drawable.farine;
-
         categoryView = (CategoryView) findViewById(R.id.categoryView);
         categoryView.setImageResource(categoryFile);
         categoryView.setCategory(categoryName, categoryFile);
 
 
         foodView = (FoodView) findViewById(R.id.foodView);
-        foodView.setImageResource(foodFile);
-        foodView.setFood(foodName, foodFile);
-
+        nextFoodToSort();
 
         categoryView.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 System.out.println("*************************************************");
-                // glucidFood.add("Farine");
                 for (String cat : glucidFood) {
                     if (cat.equals(foodView.getFood().getName())) {
-                        System.out.println("/////////////////////////////////////////");
+                        System.out.println("Brravo t'as trouvé !");
                         nextFoodToSort();
                         return true;
                     }
                 }
+                System.out.println("essaie encore !");
                 return false;
             }
         });
