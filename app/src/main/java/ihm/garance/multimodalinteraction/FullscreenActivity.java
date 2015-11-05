@@ -60,8 +60,8 @@ public class FullscreenActivity extends Activity {
 
         setContentView(R.layout.activity_fullscreen);
 
-        categoryName = "Farine";
-        categoryFile = R.drawable.farine;
+        categoryName = "Glucide";
+        categoryFile = R.drawable.glucide;
        // imageView = (ImageView)findViewById(R.id.imageViewTest);
 
         //imageView.setImageResource(R.drawable.imagetest);
