@@ -5,9 +5,9 @@ package ihm.garance.multimodalinteraction.images;
  */
 public class Category {
     private String name;
-    private String path;
+    private int path;
 
-    public void Category(String name, String path){
+    public void Category(String name, int path){
         this.name=name;
         this.path=path;
     }
@@ -16,7 +16,7 @@ public class Category {
         return name;
     }
 
-    public String getPath() {
+    public int getPath() {
         return path;
     }
 
@@ -24,7 +24,7 @@ public class Category {
         this.name = name;
     }
 
-    public void setPath(String path) {
+    public void setPath(int path) {
         this.path = path;
     }
 }
