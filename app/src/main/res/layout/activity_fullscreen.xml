@@ -47,6 +47,7 @@
             android:layout_height="400px"
             android:id="@+id/foodView"
             android:layout_gravity="center_horizontal|bottom"
+            android:tag="foodView"
             />
         <!-- Carré de l'image du bas
         Son contenu doit être en fonction du premier élément de la liste à trier

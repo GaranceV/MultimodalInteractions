@@ -3,10 +3,14 @@ package ihm.garance.multimodalinteraction;
 import ihm.garance.multimodalinteraction.util.SystemUiHider;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipDescription;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -116,8 +120,25 @@ public class FullscreenActivity extends Activity {
 
         foodView = (FoodView) findViewById(R.id.foodView);
         nextFoodToSort();
+     foodView.setOnTouchListener(new OnTouchListener() {
 
-        glucideCategory.setOnTouchListener(new View.OnTouchListener() {
+         @Override
+         public boolean onTouch(View v, MotionEvent event) {
+             if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                 System.out.println("about to initate drag ######################################");
+                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
+                 String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
+
+                 ClipData data = new ClipData(v.getTag().toString(),mimeTypes, new ClipData.Item(foodView.getFood().getName()));
+                 v.startDrag(data, shadowBuilder, v, 0);
+                 return true;
+             }
+             return false;
+         }
+     });
+
+        glucideCategory.setOnDragListener(new dropListener());
+        glucideCategory.setOnTouchListener(new OnTouchListener() {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -176,7 +197,7 @@ public class FullscreenActivity extends Activity {
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
-    View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
+    OnTouchListener mDelayHideTouchListener = new OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (AUTO_HIDE) {
@@ -201,5 +222,39 @@ public class FullscreenActivity extends Activity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+
+    private class dropListener implements View.OnDragListener {
+
+        View draggedView;
+        FoodView dropped;
+
+        @Override
+        public boolean onDrag(View v, DragEvent event) {
+            switch (event.getAction()) {
+                case DragEvent.ACTION_DRAG_STARTED:
+                    draggedView = (View) event.getLocalState();
+                    dropped = (FoodView) draggedView;
+                    draggedView.setVisibility(View.INVISIBLE);
+                    break;
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    break;
+                case DragEvent.ACTION_DRAG_EXITED:
+                    break;
+                case DragEvent.ACTION_DROP:
+                    CategoryView dropTarget = (CategoryView) v;
+                    //Define what happens on drag!!!
+                    System.out.println("t'as drag!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    //dropTarget.setText(dropped.getText().toString());
+                    break;
+                case DragEvent.ACTION_DRAG_ENDED:
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        }
+
     }
 }
