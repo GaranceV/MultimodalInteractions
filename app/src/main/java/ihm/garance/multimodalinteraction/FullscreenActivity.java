@@ -173,13 +173,8 @@ public class FullscreenActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                System.out.println("*************************************************");
-                for (String cat : glucidFood) {
-                    if (cat.equals(foodView.getFood().getName())) {
-                        System.out.println("/////////////////////////////////////////");
-                        nextFoodToSort();
-                        return;
-                    }
+                if(checkCategory(glucidFood)){
+                    nextFoodToSort();
                 }
             }
         });
@@ -187,9 +182,22 @@ public class FullscreenActivity extends Activity {
         laitierCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(checkCategory(milkyFood)){
+                    nextFoodToSort();
+                }
             }
         });
+    }
+
+    public boolean checkCategory(List<String> listCat){
+        System.out.println("*************************************************");
+        for (String cat : listCat) {
+            if (cat.equals(foodView.getFood().getName())) {
+                System.out.println("/////////////////////////////////////////");
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
