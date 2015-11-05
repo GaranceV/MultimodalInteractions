@@ -1,23 +1,19 @@
 package ihm.garance.multimodalinteraction;
 
-import ihm.garance.multimodalinteraction.images.Category;
-import ihm.garance.multimodalinteraction.images.Food;
 import ihm.garance.multimodalinteraction.util.SystemUiHider;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -53,7 +49,8 @@ public class FullscreenActivity extends Activity {
      * The instance of the {@link SystemUiHider} for this activity.
      */
     private SystemUiHider mSystemUiHider;
-    private CategoryView categoryView;
+    private CategoryView glucideCategory;
+    private CategoryView laitierCategory;
     private FoodView foodView;
 
     private String categoryName;
@@ -106,15 +103,21 @@ public class FullscreenActivity extends Activity {
         categoryName = "Glucide";
         categoryFile = R.drawable.glucide;
 
-        categoryView = (CategoryView) findViewById(R.id.categoryView);
-        categoryView.setImageResource(categoryFile);
-        categoryView.setCategory(categoryName, categoryFile);
+        glucideCategory = (CategoryView) findViewById(R.id.glucideCategory);
+        glucideCategory.setImageResource(categoryFile);
+        glucideCategory.setCategory(categoryName, categoryFile);
 
+        categoryName = "Laitier";
+        categoryFile = R.drawable.laitier;
+
+        laitierCategory = (CategoryView) findViewById(R.id.laitierCategory);
+        laitierCategory.setImageResource(categoryFile);
+        laitierCategory.setCategory(categoryName, categoryFile);
 
         foodView = (FoodView) findViewById(R.id.foodView);
         nextFoodToSort();
 
-        categoryView.setOnTouchListener(new View.OnTouchListener() {
+        glucideCategory.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
