@@ -97,22 +97,8 @@ public class FullscreenActivity extends Activity {
         foodView.setFood(foodName, foodFile);
 
 
-        glucideCategory.setOnTouchListener(new View.OnTouchListener() {
+        setOnClickListener();
 
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                System.out.println("*************************************************");
-                // glucidFood.add("Farine");
-                for (String cat : glucidFood) {
-                    if (cat.equals(foodView.getFood().getName())) {
-                        System.out.println("/////////////////////////////////////////");
-                        nextFoodToSort();
-                        return true;
-                    }
-                }
-                return false;
-            }
-        });
 
       //  final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
@@ -137,7 +123,31 @@ public class FullscreenActivity extends Activity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-     //   findViewById(R.id.imageToSort).setOnTouchListener(mDelayHideTouchListener);
+     //   findViewById(R.id.imageToSort).setOnClickListener(mDelayHideTouchListener);
+    }
+
+    public void setOnClickListener(){
+        glucideCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                System.out.println("*************************************************");
+                for (String cat : glucidFood) {
+                    if (cat.equals(foodView.getFood().getName())) {
+                        System.out.println("/////////////////////////////////////////");
+                        nextFoodToSort();
+                        return;
+                    }
+                }
+            }
+        });
+
+        laitierCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
