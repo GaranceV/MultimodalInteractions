@@ -1,5 +1,6 @@
 package ihm.garance.multimodalinteraction;
 
+import ihm.garance.multimodalinteraction.images.Food;
 import ihm.garance.multimodalinteraction.util.SystemUiHider;
 
 import android.annotation.TargetApi;
@@ -44,14 +45,16 @@ public class FullscreenActivity extends Activity {
      * The instance of the {@link SystemUiHider} for this activity.
      */
     private SystemUiHider mSystemUiHider;
-    private CategoryView view;
+    private CategoryView categoryView;
+    private FoodView foodView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_fullscreen);
-        view = (CategoryView) findViewById(R.id.categoryView);
+        categoryView = (CategoryView) findViewById(R.id.categoryView);
+        foodView = (FoodView) findViewById(R.id.foodView);
 
       //  final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);

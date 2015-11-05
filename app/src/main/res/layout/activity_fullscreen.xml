@@ -33,6 +33,14 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             />
+
+        <ihm.garance.multimodalinteraction.FoodView
+            android:layout_width="768px"
+            android:layout_height="700px"
+            android:id="@+id/foodView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
         <!-- Carré de l'image du bas
         Son contenu doit être en fonction du premier élément de la liste à trier
         Ou pour le moment, d'un seul-->

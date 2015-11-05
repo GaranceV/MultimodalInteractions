@@ -23,8 +23,8 @@ public class FoodView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), toSort.getPath());
-        canvas.drawBitmap(myBitmap, 0, 0, null);
+//        Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), toSort.getPath());
+  //      canvas.drawBitmap(myBitmap, 0, 0, null);
     }
 
 
