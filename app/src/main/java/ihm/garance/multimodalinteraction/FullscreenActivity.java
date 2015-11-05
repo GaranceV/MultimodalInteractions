@@ -1,5 +1,6 @@
 package ihm.garance.multimodalinteraction;
 
+import ihm.garance.multimodalinteraction.images.Category;
 import ihm.garance.multimodalinteraction.util.SystemUiHider;
 
 import android.app.Activity;
@@ -62,9 +63,6 @@ public class FullscreenActivity extends Activity {
 
     private Map<String, Integer> foodList;
 
-    private List<String> glucidFood;
-    private List<String> milkyFood;
-
     private void createAllTheFood() {
         foodList = new HashMap<>();
         foodList.put("farine", R.drawable.farine);
@@ -73,15 +71,6 @@ public class FullscreenActivity extends Activity {
         foodList.put("fromage", R.drawable.fromage);
     }
 
-    private void fillListOfFoodInRightCategory() {
-        glucidFood = new ArrayList<>();
-        glucidFood.add("farine");
-        glucidFood.add("patate");
-
-        milkyFood = new ArrayList<>();
-        milkyFood.add("lait");
-        milkyFood.add("fromage");
-    }
 
     private void nextFoodToSort() {
 
@@ -99,7 +88,6 @@ public class FullscreenActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         createAllTheFood();
-        fillListOfFoodInRightCategory();
 
         setContentView(R.layout.activity_fullscreen);
 
@@ -110,13 +98,15 @@ public class FullscreenActivity extends Activity {
         glucideCategory = (CategoryView) findViewById(R.id.glucideCategory);
         glucideCategory.setImageResource(categoryFile);
         glucideCategory.setCategory(categoryName, categoryFile);
-
+        glucideCategory.fillFoodList("farine", "patate");
         categoryName = "Laitier";
         categoryFile = R.drawable.laitier;
 
         laitierCategory = (CategoryView) findViewById(R.id.laitierCategory);
         laitierCategory.setImageResource(categoryFile);
         laitierCategory.setCategory(categoryName, categoryFile);
+        laitierCategory.fillFoodList("lait", "fromage");
+
 
         foodView = (FoodView) findViewById(R.id.foodView);
         nextFoodToSort();
@@ -173,7 +163,8 @@ public class FullscreenActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                if(checkCategory(glucidFood)){
+                CategoryView viewClicked = (CategoryView) v;
+                if(checkCategory(viewClicked.getFoodList())){
                     nextFoodToSort();
                 }
             }
@@ -182,7 +173,8 @@ public class FullscreenActivity extends Activity {
         laitierCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkCategory(milkyFood)){
+                CategoryView viewClicked = (CategoryView) v;
+                if(checkCategory(viewClicked.getFoodList())){
                     nextFoodToSort();
                 }
             }
@@ -267,6 +259,14 @@ public class FullscreenActivity extends Activity {
                     System.out.println("t'as drag!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
                     System.out.println("Ce que t'as voulu, c'est " + dropped.getFood().getName());
+               /*     public void onClick(View v) {
+                    if(checkCategory(glucidFood)){
+                        nextFoodToSort();
+                    }
+                }*/
+                    if (checkCategory(dropTarget.getFoodList())) {
+                        nextFoodToSort();
+                    }
                     //Imaginons que ça soit faux sans avoir vérifié
                     draggedView.setVisibility(View.VISIBLE);
                     break;

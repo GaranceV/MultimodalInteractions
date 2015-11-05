@@ -4,6 +4,9 @@ package ihm.garance.multimodalinteraction.images;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ihm.garance.multimodalinteraction.R;
 
 /**
@@ -19,10 +22,10 @@ public class Category {
     }
 
     public void Category(){
-  //      this.name="imageTest";
-//        this.path= R.drawable.imagetest;
         this.name="";
     }
+
+
 
 
     public String getName() {
@@ -30,10 +33,6 @@ public class Category {
     }
 
     public Integer getPath() {
-        System.out.println("*****************************");
-        if (path == null) {
-            System.out.println("///////////////////////////////////////////////::");
-        }
         return path;
     }
 

@@ -5,6 +5,9 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ihm.garance.multimodalinteraction.images.Category;
 
 /**
@@ -12,11 +15,23 @@ import ihm.garance.multimodalinteraction.images.Category;
  */
 public class CategoryView extends ImageView {
     private Category toSort;
-   // private ImageView imageViewTest;
+    private List<String> foodList;
+
+    // private ImageView imageViewTest;
 
     public CategoryView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
+        foodList = new ArrayList<>();
         toSort = new Category();
+    }
+
+    public void fillFoodList(String food1, String food2) {
+        foodList.add(food2);
+        foodList.add(food1);
+    }
+
+    public List<String> getFoodList() {
+        return foodList;
     }
 
     @Override
