@@ -121,7 +121,6 @@ public class FullscreenActivity extends Activity {
         foodView = (FoodView) findViewById(R.id.foodView);
         nextFoodToSort();
      foodView.setOnTouchListener(new OnTouchListener() {
-
          @Override
          public boolean onTouch(View v, MotionEvent event) {
              if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -138,22 +137,10 @@ public class FullscreenActivity extends Activity {
      });
 
         glucideCategory.setOnDragListener(new dropListener());
-        glucideCategory.setOnTouchListener(new OnTouchListener() {
 
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                System.out.println("*************************************************");
-                for (String cat : glucidFood) {
-                    if (cat.equals(foodView.getFood().getName())) {
-                        System.out.println("Brravo t'as trouvé !");
-                        nextFoodToSort();
-                        return true;
-                    }
-                }
-                System.out.println("essaie encore !");
-                return false;
-            }
-        });
+
+        setOnClickListener();
+
 
       //  final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
@@ -178,7 +165,31 @@ public class FullscreenActivity extends Activity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-     //   findViewById(R.id.imageToSort).setOnTouchListener(mDelayHideTouchListener);
+     //   findViewById(R.id.imageToSort).setOnClickListener(mDelayHideTouchListener);
+    }
+
+    public void setOnClickListener(){
+        glucideCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                System.out.println("*************************************************");
+                for (String cat : glucidFood) {
+                    if (cat.equals(foodView.getFood().getName())) {
+                        System.out.println("/////////////////////////////////////////");
+                        nextFoodToSort();
+                        return;
+                    }
+                }
+            }
+        });
+
+        laitierCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
