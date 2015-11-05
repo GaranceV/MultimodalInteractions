@@ -1,5 +1,7 @@
 package ihm.garance.multimodalinteraction.images;
 
+import ihm.garance.multimodalinteraction.R;
+
 /**
  * Created by Garance on 05/11/2015.
  */
@@ -10,6 +12,11 @@ public class Category {
     public void Category(String name, int path){
         this.name=name;
         this.path=path;
+    }
+
+    public void Category(){
+        this.name="farine";
+        this.path= R.drawable.farine;
     }
 
     public String getName() {

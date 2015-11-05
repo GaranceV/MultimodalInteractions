@@ -1,5 +1,6 @@
 package ihm.garance.multimodalinteraction;
 
+import ihm.garance.multimodalinteraction.util.CategoryView;
 import ihm.garance.multimodalinteraction.util.SystemUiHider;
 
 import android.annotation.TargetApi;
@@ -44,12 +45,14 @@ public class FullscreenActivity extends Activity {
      * The instance of the {@link SystemUiHider} for this activity.
      */
     private SystemUiHider mSystemUiHider;
+    private CategoryView view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_fullscreen);
+        view = (CategoryView) findViewById(R.id.category);
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
