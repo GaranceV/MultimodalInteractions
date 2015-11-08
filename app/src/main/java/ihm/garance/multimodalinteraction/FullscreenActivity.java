@@ -117,11 +117,11 @@ public class FullscreenActivity extends Activity {
                  System.out.println("about to initate drag ######################################");
                  View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
                  String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
-
                  ClipData data = new ClipData(v.getTag().toString(), mimeTypes, new ClipData.Item(foodView.getFood().getName()));
                  v.startDrag(data, shadowBuilder, v, 0);
                  return true;
              }
+             System.out.println("got a false..............................");
              return false;
          }
      });
@@ -133,13 +133,12 @@ public class FullscreenActivity extends Activity {
         setOnClickListener();
 
 
-        final View contentView = findViewById(R.id.fullscreen_content);
-
+        View contentView = findViewById(R.id.fullscreen_content);
+            contentView.setOnDragListener(new dropListener());
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
         mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
         mSystemUiHider.setup();
-
         // Set up the user interaction to manually show or hide the system UI.
         contentView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -254,20 +253,14 @@ public class FullscreenActivity extends Activity {
                 case DragEvent.ACTION_DRAG_EXITED:
                     break;
                 case DragEvent.ACTION_DROP:
-                    CategoryView dropTarget = (CategoryView) v;
-                    //Define what happens on drag!!!
-                    System.out.println("t'as drag!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-                    System.out.println("Ce que t'as voulu, c'est " + dropped.getFood().getName());
-               /*     public void onClick(View v) {
-                    if(checkCategory(glucidFood)){
-                        nextFoodToSort();
+                    if (v instanceof CategoryView) {
+                        CategoryView dropTarget = (CategoryView) v;
+                        //Define what happens on drag!!!
+                        System.out.println("Ce que t'as voulu, c'est " + dropped.getFood().getName());
+                        if (checkCategory(dropTarget.getFoodList())) {
+                            nextFoodToSort();
+                        }
                     }
-                }*/
-                    if (checkCategory(dropTarget.getFoodList())) {
-                        nextFoodToSort();
-                    }
-                    //Imaginons que ça soit faux sans avoir vérifié
                     draggedView.setVisibility(View.VISIBLE);
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
