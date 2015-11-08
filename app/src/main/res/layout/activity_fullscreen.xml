@@ -56,11 +56,12 @@
             />
 
         <ihm.garance.multimodalinteraction.FoodView
-            android:layout_width="245px"
-            android:layout_height="165px"
+            android:layout_width="200sp"
+            android:layout_height="120sp"
             android:id="@+id/foodView"
             android:layout_gravity="center_horizontal|bottom"
             android:tag="foodView"
+            android:scaleType="fitXY"
             />
         <!-- Carré de l'image du bas
         Son contenu doit être en fonction du premier élément de la liste à trier
