@@ -77,6 +77,12 @@ public class FullscreenActivity extends Activity {
         foodList.put("pates", R.drawable.pates);
         foodList.put("riz", R.drawable.riz);
         foodList.put("yaourt", R.drawable.yaourt);
+        foodList.put("banane", R.drawable.banane);
+        foodList.put("chou", R.drawable.chou);
+        foodList.put("fraises", R.drawable.fraises);
+        foodList.put("poireaux", R.drawable.poireaux);
+        foodList.put("salade", R.drawable.salade);
+        foodList.put("tomate", R.drawable.tomate);
     }
 
 
@@ -125,6 +131,10 @@ public class FullscreenActivity extends Activity {
         fruitlegCategory = (CategoryView) findViewById(R.id.fruitlegCategory);
         fruitlegCategory.setImageResource(categoryFile);
         fruitlegCategory.setCategory(categoryName, categoryFile);
+        List<String> fruitList = new ArrayList<>();
+        fruitList.add("fraises");fruitList.add("poireaux"); fruitList.add("banane");fruitList.add("chou");
+        fruitList.add("tomate");fruitList.add("salade");
+        fruitlegCategory.fillFoodList(fruitList);
 
         foodView = (FoodView) findViewById(R.id.foodView);
         nextFoodToSort();
@@ -146,7 +156,7 @@ public class FullscreenActivity extends Activity {
 
         glucideCategory.setOnDragListener(new dropListener());
         laitierCategory.setOnDragListener(new dropListener());
-
+        fruitlegCategory.setOnDragListener(new dropListener());
 
         setOnClickListener();
 
@@ -196,13 +206,22 @@ public class FullscreenActivity extends Activity {
                 }
             }
         });
+        fruitlegCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CategoryView viewClicked = (CategoryView) v;
+                if(checkCategory(viewClicked.getFoodList())){
+                    nextFoodToSort();
+                }
+            }
+        });
     }
 
     public boolean checkCategory(List<String> listCat){
-        System.out.println("*************************************************");
+        System.out.println("Checking category");
         for (String cat : listCat) {
             if (cat.equals(foodView.getFood().getName())) {
-                System.out.println("/////////////////////////////////////////");
+                System.out.println("It's the right category !");
                 return true;
             }
         }
