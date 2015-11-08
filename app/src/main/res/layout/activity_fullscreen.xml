@@ -44,8 +44,8 @@
             />
 
         <ihm.garance.multimodalinteraction.FoodView
-            android:layout_width="400px"
-            android:layout_height="400px"
+            android:layout_width="100dp"
+            android:layout_height="85dp"
             android:id="@+id/foodView"
             android:layout_gravity="center_horizontal|bottom"
             android:tag="foodView"

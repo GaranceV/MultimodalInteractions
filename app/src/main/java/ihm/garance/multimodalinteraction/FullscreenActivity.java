@@ -115,8 +115,8 @@ public class FullscreenActivity extends Activity {
         laitierCategory.setImageResource(categoryFile);
         laitierCategory.setCategory(categoryName, categoryFile);
         List<String> dairyList = new ArrayList<>();
-        glucidList.add("lait");glucidList.add("fromage"); glucidList.add("fromage2");glucidList.add("fromagerape");
-        glucidList.add("yaourt");
+        dairyList.add("lait");dairyList.add("fromage"); dairyList.add("fromage2");dairyList.add("fromagerape");
+        dairyList.add("yaourt");
         laitierCategory.fillFoodList(dairyList);
 
 
