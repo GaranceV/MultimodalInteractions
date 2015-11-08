@@ -127,7 +127,7 @@ public class FullscreenActivity extends Activity {
         laitierCategory.fillFoodList(dairyList);
 
         categoryName = "FruitLeg";
-        categoryFile = R.drawable.fruitleg;
+        categoryFile = R.drawable.fruit;
         fruitlegCategory = (CategoryView) findViewById(R.id.fruitlegCategory);
         fruitlegCategory.setImageResource(categoryFile);
         fruitlegCategory.setCategory(categoryName, categoryFile);
