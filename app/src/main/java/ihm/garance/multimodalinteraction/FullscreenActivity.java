@@ -69,6 +69,13 @@ public class FullscreenActivity extends Activity {
         foodList.put("lait", R.drawable.lait);
         foodList.put("patate", R.drawable.patate);
         foodList.put("fromage", R.drawable.fromage);
+        foodList.put("croissant", R.drawable.croissant);
+        foodList.put("fromage2", R.drawable.fromage2);
+        foodList.put("pain", R.drawable.pain);
+        foodList.put("fromagerape", R.drawable.fromagerape);
+        foodList.put("pates", R.drawable.pates);
+        foodList.put("riz", R.drawable.riz);
+        foodList.put("yaourt", R.drawable.yaourt);
     }
 
 
@@ -94,18 +101,23 @@ public class FullscreenActivity extends Activity {
 
         categoryName = "Glucide";
         categoryFile = R.drawable.glucide;
-
         glucideCategory = (CategoryView) findViewById(R.id.glucideCategory);
         glucideCategory.setImageResource(categoryFile);
         glucideCategory.setCategory(categoryName, categoryFile);
-        glucideCategory.fillFoodList("farine", "patate");
+        List<String> glucidList = new ArrayList<>();
+        glucidList.add("farine");glucidList.add("patate"); glucidList.add("croissant");glucidList.add("pain");
+        glucidList.add("pates");glucidList.add("riz");
+        glucideCategory.fillFoodList(glucidList);
         categoryName = "Laitier";
         categoryFile = R.drawable.laitier;
 
         laitierCategory = (CategoryView) findViewById(R.id.laitierCategory);
         laitierCategory.setImageResource(categoryFile);
         laitierCategory.setCategory(categoryName, categoryFile);
-        laitierCategory.fillFoodList("lait", "fromage");
+        List<String> dairyList = new ArrayList<>();
+        glucidList.add("lait");glucidList.add("fromage"); glucidList.add("fromage2");glucidList.add("fromagerape");
+        glucidList.add("yaourt");
+        laitierCategory.fillFoodList(dairyList);
 
 
         foodView = (FoodView) findViewById(R.id.foodView);

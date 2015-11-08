@@ -25,9 +25,8 @@ public class CategoryView extends ImageView {
         toSort = new Category();
     }
 
-    public void fillFoodList(String food1, String food2) {
-        foodList.add(food2);
-        foodList.add(food1);
+    public void fillFoodList(List<String> food) {
+        foodList.addAll(food);
     }
 
     public List<String> getFoodList() {
