@@ -56,6 +56,7 @@ public class FullscreenActivity extends Activity {
     private SystemUiHider mSystemUiHider;
     private CategoryView glucideCategory;
     private CategoryView laitierCategory;
+    private CategoryView fruitlegCategory;
     private FoodView foodView;
 
     private String categoryName;
@@ -119,6 +120,11 @@ public class FullscreenActivity extends Activity {
         dairyList.add("yaourt");
         laitierCategory.fillFoodList(dairyList);
 
+        categoryName = "FruitLeg";
+        categoryFile = R.drawable.fruitleg;
+        fruitlegCategory = (CategoryView) findViewById(R.id.fruitlegCategory);
+        fruitlegCategory.setImageResource(categoryFile);
+        fruitlegCategory.setCategory(categoryName, categoryFile);
 
         foodView = (FoodView) findViewById(R.id.foodView);
         nextFoodToSort();
