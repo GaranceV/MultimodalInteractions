@@ -1,6 +1,5 @@
 package ihm.garance.multimodalinteraction;
 
-import ihm.garance.multimodalinteraction.images.Category;
 import ihm.garance.multimodalinteraction.util.SystemUiHider;
 
 import android.app.Activity;
@@ -15,7 +14,6 @@ import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,31 +31,11 @@ import java.util.Random;
 public class FullscreenActivity extends Activity {
     /**
      * Whether or not the system UI should be auto-hidden after
-     * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
+     * milliseconds.
      */
     private static final boolean AUTO_HIDE = true;
 
-    /**
-     * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
-     * user interaction before hiding the system UI.
-     */
-    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
 
-    /**
-     * If set, will toggle the system UI visibility upon interaction. Otherwise,
-     * will show the system UI visibility upon interaction.
-     */
-    private static final boolean TOGGLE_ON_CLICK = true;
-
-    /**
-     * The flags to pass to {@link SystemUiHider#getInstance}.
-     */
-    private static final int HIDER_FLAGS = SystemUiHider.FLAG_HIDE_NAVIGATION;
-
-    /**
-     * The instance of the {@link SystemUiHider} for this activity.
-     */
-    private SystemUiHider mSystemUiHider;
     private CategoryView glucideCategory;
     private CategoryView laitierCategory;
     private CategoryView fruitlegCategory;
@@ -68,8 +46,7 @@ public class FullscreenActivity extends Activity {
 
     private Map<String, Integer> foodList;
 
-
-    private final int QUANTITY_TO_SORT=10;
+    private final int QUANTITY_TO_SORT=30;
     private int quantitySorted;
     private void createAllTheFood() {
         foodList = new HashMap<>();
@@ -79,6 +56,10 @@ public class FullscreenActivity extends Activity {
         foodList.put("pates", R.drawable.pates);
         foodList.put("pain", R.drawable.pain);
         foodList.put("croissant", R.drawable.croissant);
+        foodList.put("biscotte", R.drawable.biscotte);
+        foodList.put("mais", R.drawable.mais);
+        foodList.put("cereales", R.drawable.cereales);
+        foodList.put("poischiche", R.drawable.poischiche);
 
         foodList.put("lait", R.drawable.lait);
         foodList.put("fromage", R.drawable.fromage);
@@ -86,13 +67,21 @@ public class FullscreenActivity extends Activity {
         foodList.put("fromagerape", R.drawable.fromagerape);
         foodList.put("yaourt", R.drawable.yaourt);
         foodList.put("cremefraiche", R.drawable.cremefraiche);
+        foodList.put("cremefraiche2", R.drawable.cremefraiche2);
+        foodList.put("fromageblanc", R.drawable.fromageblanc);
+        foodList.put("chantilly", R.drawable.chantilly);
+        foodList.put("kiri", R.drawable.kiri);
 
         foodList.put("banane", R.drawable.banane);
-        foodList.put("chou", R.drawable.chou);
         foodList.put("fraises", R.drawable.fraises);
+        foodList.put("pommes", R.drawable.pommes);
+        foodList.put("kiwi", R.drawable.kiwi);
+        foodList.put("fruitpassion", R.drawable.fruitpassion);
+        foodList.put("chou", R.drawable.chou);
         foodList.put("poireaux", R.drawable.poireaux);
         foodList.put("salade", R.drawable.salade);
         foodList.put("tomate", R.drawable.tomate);
+        foodList.put("courgettes", R.drawable.courgettes);
     }
 
 
@@ -130,7 +119,9 @@ public class FullscreenActivity extends Activity {
         glucideCategory.setCategory(categoryName, categoryFile);
         List<String> glucidList = new ArrayList<>();
         glucidList.add("farine");glucidList.add("patate"); glucidList.add("croissant");glucidList.add("pain");
-        glucidList.add("pates");glucidList.add("riz");
+        glucidList.add("pates");glucidList.add("riz"); glucidList.add("biscotte");glucidList.add("mais");
+        glucidList.add("cereales");glucidList.add("poischiche");
+
         glucideCategory.fillFoodList(glucidList);
         categoryName = "Laitier";
         categoryFile = R.drawable.laitier;
@@ -140,7 +131,8 @@ public class FullscreenActivity extends Activity {
         laitierCategory.setCategory(categoryName, categoryFile);
         List<String> dairyList = new ArrayList<>();
         dairyList.add("lait");dairyList.add("fromage"); dairyList.add("fromage2");dairyList.add("fromagerape");
-        dairyList.add("yaourt");dairyList.add("cremefraiche");
+        dairyList.add("yaourt");dairyList.add("cremefraiche");dairyList.add("fromageblanc");
+        dairyList.add("cremefraiche2");dairyList.add("chantilly");dairyList.add("kiri");
         laitierCategory.fillFoodList(dairyList);
 
         categoryName = "FruitLeg";
@@ -150,7 +142,8 @@ public class FullscreenActivity extends Activity {
         fruitlegCategory.setCategory(categoryName, categoryFile);
         List<String> fruitList = new ArrayList<>();
         fruitList.add("fraises");fruitList.add("poireaux"); fruitList.add("banane");fruitList.add("chou");
-        fruitList.add("tomate");fruitList.add("salade");
+        fruitList.add("tomate");fruitList.add("salade");fruitList.add("fruitpassion");fruitList.add("kiwi");
+        fruitList.add("courgettes");fruitList.add("pommes");
         fruitlegCategory.fillFoodList(fruitList);
 
         foodView = (FoodView) findViewById(R.id.foodView);
@@ -159,14 +152,12 @@ public class FullscreenActivity extends Activity {
          @Override
          public boolean onTouch(View v, MotionEvent event) {
              if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                 System.out.println("about to initate drag ######################################");
                  View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
                  String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
                  ClipData data = new ClipData(v.getTag().toString(), mimeTypes, new ClipData.Item(foodView.getFood().getName()));
                  v.startDrag(data, shadowBuilder, v, 0);
                  return true;
              }
-             System.out.println("got a false..............................");
              return false;
          }
      });
@@ -180,26 +171,6 @@ public class FullscreenActivity extends Activity {
 
         View contentView = findViewById(R.id.fullscreen_content);
             contentView.setOnDragListener(new dropListener());
-        // Set up an instance of SystemUiHider to control the system UI for
-        // this activity.
-        mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
-        mSystemUiHider.setup();
-        // Set up the user interaction to manually show or hide the system UI.
-        contentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (TOGGLE_ON_CLICK) {
-                    mSystemUiHider.toggle();
-                } else {
-                    mSystemUiHider.show();
-                }
-            }
-        });
-
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
-     //   findViewById(R.id.imageToSort).setOnClickListener(mDelayHideTouchListener);
     }
 
     public void setOnClickListener(){
@@ -235,10 +206,8 @@ public class FullscreenActivity extends Activity {
     }
 
     public boolean checkCategory(List<String> listCat){
-        System.out.println("Checking category");
         for (String cat : listCat) {
             if (cat.equals(foodView.getFood().getName())) {
-                System.out.println("It's the right category !");
                 return true;
             }
         }
@@ -248,7 +217,6 @@ public class FullscreenActivity extends Activity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
@@ -256,26 +224,11 @@ public class FullscreenActivity extends Activity {
     }
 
 
-    /**
-     * Touch listener to use for in-layout UI controls to delay hiding the
-     * system UI. This is to prevent the jarring behavior of controls going away
-     * while interacting with activity UI.
-     */
-    OnTouchListener mDelayHideTouchListener = new OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (AUTO_HIDE) {
-                delayedHide(AUTO_HIDE_DELAY_MILLIS);
-            }
-            return false;
-        }
-    };
 
     Handler mHideHandler = new Handler();
     Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
-            mSystemUiHider.hide();
         }
     };
 
@@ -310,7 +263,6 @@ public class FullscreenActivity extends Activity {
                     if (v instanceof CategoryView) {
                         CategoryView dropTarget = (CategoryView) v;
                         //Define what happens on drag!!!
-                        System.out.println("Ce que t'as voulu, c'est " + dropped.getFood().getName());
                         if (checkCategory(dropTarget.getFoodList())) {
                             nextFoodToSort();
                         }
