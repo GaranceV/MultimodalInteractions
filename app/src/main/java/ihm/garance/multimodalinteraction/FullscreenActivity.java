@@ -318,6 +318,7 @@ public class FullscreenActivity extends Activity {
                     draggedView.setVisibility(View.VISIBLE);
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
+                    draggedView.setVisibility(View.VISIBLE);
                     break;
                 default:
                     break;
