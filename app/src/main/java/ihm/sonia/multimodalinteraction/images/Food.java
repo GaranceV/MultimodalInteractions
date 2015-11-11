@@ -1,6 +1,4 @@
-package ihm.garance.multimodalinteraction.images;
-
-import ihm.garance.multimodalinteraction.R;
+package ihm.sonia.multimodalinteraction.images;
 
 /**
  * Created by Garance on 05/11/2015.

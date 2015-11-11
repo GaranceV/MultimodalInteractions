@@ -1,4 +1,4 @@
-package ihm.garance.multimodalinteraction;
+package ihm.sonia.multimodalinteraction;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

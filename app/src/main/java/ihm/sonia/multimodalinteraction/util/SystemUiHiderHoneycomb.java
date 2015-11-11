@@ -1,4 +1,4 @@
-package ihm.garance.multimodalinteraction.util;
+package ihm.sonia.multimodalinteraction.util;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

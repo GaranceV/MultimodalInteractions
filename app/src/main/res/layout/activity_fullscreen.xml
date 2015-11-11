@@ -26,7 +26,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-        <ihm.garance.multimodalinteraction.CategoryView
+        <ihm.sonia.multimodalinteraction.CategoryView
             android:id="@+id/glucideCategory"
             android:layout_width="250dp"
             android:layout_height="170dp"
@@ -35,7 +35,7 @@
             android:layout_marginTop="5dp"
             android:scaleType="fitXY" />
 
-        <ihm.garance.multimodalinteraction.CategoryView
+        <ihm.sonia.multimodalinteraction.CategoryView
             android:id="@+id/fruitlegCategory"
             android:layout_width="250dp"
             android:layout_height="170dp"
@@ -44,7 +44,7 @@
             android:layout_marginTop="5dp"
             android:scaleType="fitXY" />
 
-        <ihm.garance.multimodalinteraction.CategoryView
+        <ihm.sonia.multimodalinteraction.CategoryView
             android:id="@+id/laitierCategory"
             android:layout_width="250dp"
             android:layout_height="170dp"
@@ -53,7 +53,7 @@
             android:layout_marginTop="5dp"
             android:scaleType="fitXY" />
 
-        <ihm.garance.multimodalinteraction.FoodView
+        <ihm.sonia.multimodalinteraction.FoodView
             android:id="@+id/foodView"
             android:layout_width="104sp"
             android:layout_height="104sp"

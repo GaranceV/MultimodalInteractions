@@ -1,13 +1,5 @@
-package ihm.garance.multimodalinteraction.images;
+package ihm.sonia.multimodalinteraction.images;
 
-
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import ihm.garance.multimodalinteraction.R;
 
 /**
  * Created by Garance on 05/11/2015.

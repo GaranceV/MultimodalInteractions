@@ -1,6 +1,6 @@
-package ihm.garance.multimodalinteraction;
+package ihm.sonia.multimodalinteraction;
 
-import ihm.garance.multimodalinteraction.util.SystemUiHider;
+import ihm.sonia.multimodalinteraction.util.SystemUiHider;
 
 import android.app.Activity;
 import android.content.ClipData;
@@ -92,6 +92,7 @@ public class FullscreenActivity extends Activity {
         List<String> keys      = new ArrayList<String>(foodList.keySet());
         String       randomKey = keys.get( random.nextInt(keys.size()) );
         Integer       value     = foodList.get(randomKey);
+      //  foodList.remove(randomKey);
 
         foodView.setImageResource(value);
         foodView.setFood(randomKey, value);
@@ -100,6 +101,7 @@ public class FullscreenActivity extends Activity {
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
             r.play();
+        //    createAllTheFood();
         }
     }
 

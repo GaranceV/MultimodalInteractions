@@ -1,4 +1,4 @@
-package ihm.garance.multimodalinteraction;
+package ihm.sonia.multimodalinteraction;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-import ihm.garance.multimodalinteraction.images.Category;
+import ihm.sonia.multimodalinteraction.images.Category;
 
 /**
  * Created by sonia on 05/11/15.

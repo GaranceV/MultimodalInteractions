@@ -1,4 +1,4 @@
-package ihm.garance.multimodalinteraction;
+package ihm.sonia.multimodalinteraction;
 
 import android.content.Context;
 
@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import ihm.garance.multimodalinteraction.images.Food;
+import ihm.sonia.multimodalinteraction.images.Food;
 
 /**
  * Created by Garance on 05/11/2015.
