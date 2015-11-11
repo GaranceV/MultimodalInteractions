@@ -6,12 +6,16 @@ import ihm.garance.multimodalinteraction.util.SystemUiHider;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,19 +68,25 @@ public class FullscreenActivity extends Activity {
 
     private Map<String, Integer> foodList;
 
+
+    private final int QUANTITY_TO_SORT=10;
+    private int quantitySorted;
     private void createAllTheFood() {
         foodList = new HashMap<>();
         foodList.put("farine", R.drawable.farine);
-        foodList.put("lait", R.drawable.lait);
-        foodList.put("patate", R.drawable.patate);
-        foodList.put("fromage", R.drawable.fromage);
-        foodList.put("croissant", R.drawable.croissant);
-        foodList.put("fromage2", R.drawable.fromage2);
-        foodList.put("pain", R.drawable.pain);
-        foodList.put("fromagerape", R.drawable.fromagerape);
-        foodList.put("pates", R.drawable.pates);
         foodList.put("riz", R.drawable.riz);
+        foodList.put("patate", R.drawable.patate);
+        foodList.put("pates", R.drawable.pates);
+        foodList.put("pain", R.drawable.pain);
+        foodList.put("croissant", R.drawable.croissant);
+
+        foodList.put("lait", R.drawable.lait);
+        foodList.put("fromage", R.drawable.fromage);
+        foodList.put("fromage2", R.drawable.fromage2);
+        foodList.put("fromagerape", R.drawable.fromagerape);
         foodList.put("yaourt", R.drawable.yaourt);
+        foodList.put("cremefraiche", R.drawable.cremefraiche);
+
         foodList.put("banane", R.drawable.banane);
         foodList.put("chou", R.drawable.chou);
         foodList.put("fraises", R.drawable.fraises);
@@ -96,10 +106,17 @@ public class FullscreenActivity extends Activity {
 
         foodView.setImageResource(value);
         foodView.setFood(randomKey, value);
+        quantitySorted++;
+        if (quantitySorted >= QUANTITY_TO_SORT) {
+            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+            r.play();
+        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        quantitySorted=0;
         super.onCreate(savedInstanceState);
         createAllTheFood();
 
@@ -123,7 +140,7 @@ public class FullscreenActivity extends Activity {
         laitierCategory.setCategory(categoryName, categoryFile);
         List<String> dairyList = new ArrayList<>();
         dairyList.add("lait");dairyList.add("fromage"); dairyList.add("fromage2");dairyList.add("fromagerape");
-        dairyList.add("yaourt");
+        dairyList.add("yaourt");dairyList.add("cremefraiche");
         laitierCategory.fillFoodList(dairyList);
 
         categoryName = "FruitLeg";
